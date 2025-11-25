@@ -1,13 +1,15 @@
-export const themes = { 
+export const defaulTheme = { 
   fonts: {
     'tile-xs': `700 1.8rem/1.3 "Baloo 2", sans-serif;`,
     'tile-s': `700 2rem/1.3 "Baloo 2", sans-serif;`,
     'tile-m': `800 2.4rem/1.3 "Baloo 2", sans-serif;`,
     'tile-l': `800 3.2rem/1.3 "Baloo 2", sans-serif;`,
     'tile-xl': `800 4.8rem/1.3 "Baloo 2", sans-serif;`,
-    'text-s': `700 1.2rem/1.3 "Roboto", sans-serif;`,
-    'text-m': `400 1.4rem/1.3 "Roboto", sans-serif;`,
-    'text-m-bold': `800 1.6rem/1.3 "Roboto", sans-serif;`,
+    'text-xs': `700 1.2rem/1.3 "Roboto", sans-serif;`,
+    'text-s': `400 1.4rem/1.3 "Roboto", sans-serif;`,
+    'text-s-bold': `700 1.4rem/1.3 "Roboto", sans-serif;`,
+    'text-m': `400 1.6rem/1.3 "Roboto", sans-serif;`,
+    'text-m-bold': `700 1.6rem/1.3 "Roboto", sans-serif;`,
     'text-l': `400 2rem/1.3 "Roboto", sans-serif;`,
     'text-l-bold': `700 2rem/1.3 "Roboto", sans-serif;`,
     'tag': `700 1rem/1.3 "Roboto", sans-serif;`,
