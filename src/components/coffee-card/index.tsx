@@ -1,7 +1,7 @@
 import { ShoppingCartSimpleIcon } from "@phosphor-icons/react";
 import { CardControlsContainer, CardPriceAndControlsContainer, CoffeeCardContainer, TagItem, TagList } from "./styles";
 
-import coffeeImage from '../../assets/images/americano.png';
+import coffeeImage from '../../assets/images/expresso_americano.png';
 import { CartControls } from "../cart-controls";
 
 export function CoffeeCard (){
