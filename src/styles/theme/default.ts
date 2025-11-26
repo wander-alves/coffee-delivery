@@ -1,10 +1,10 @@
 export const defaulTheme = { 
   fonts: {
-    'tile-xs': `700 1.8rem/1.3 "Baloo 2", sans-serif;`,
-    'tile-s': `700 2rem/1.3 "Baloo 2", sans-serif;`,
-    'tile-m': `800 2.4rem/1.3 "Baloo 2", sans-serif;`,
-    'tile-l': `800 3.2rem/1.3 "Baloo 2", sans-serif;`,
-    'tile-xl': `800 4.8rem/1.3 "Baloo 2", sans-serif;`,
+    'title-xs': `700 1.8rem/1.3 "Baloo 2", sans-serif;`,
+    'title-s': `700 2rem/1.3 "Baloo 2", sans-serif;`,
+    'title-m': `800 2.4rem/1.3 "Baloo 2", sans-serif;`,
+    'title-l': `800 3.2rem/1.3 "Baloo 2", sans-serif;`,
+    'title-xl': `800 4.8rem/1.3 "Baloo 2", sans-serif;`,
     'text-xs': `700 1.2rem/1.3 "Roboto", sans-serif;`,
     'text-s': `400 1.4rem/1.3 "Roboto", sans-serif;`,
     'text-s-bold': `700 1.4rem/1.3 "Roboto", sans-serif;`,

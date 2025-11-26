@@ -30,7 +30,7 @@ export const HeroHeadlineContentContainer = styled.div`
   gap: 1.6rem;
 
   &>h1 { 
-    font: ${({theme})=> theme.fonts["tile-xl"]};
+    font: ${({theme})=> theme.fonts["title-xl"]};
     color: ${({theme})=> theme.colors["base-title"]};
   }
   &>p { 
