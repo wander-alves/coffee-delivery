@@ -13,7 +13,7 @@ export function Header(){
         </span>
         <Link to='/checkout'>
           <ShoppingCartIcon weight="fill" size={22}/>
-          <CartItemsContainer isVisible={false}>3</CartItemsContainer>
+          <CartItemsContainer visible="false">3</CartItemsContainer>
         </Link>
       </CustomerLocationAndCart>
     </HeaderContainer>

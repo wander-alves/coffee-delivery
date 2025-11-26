@@ -41,7 +41,7 @@ export const CustomerLocationAndCart = styled.div`
 `;
 
 interface CartItemsContainerProps {
-  isVisible: boolean;
+  visible: 'true' | 'false';
 }
 
 export const CartItemsContainer = styled.span<CartItemsContainerProps>`
@@ -62,10 +62,5 @@ export const CartItemsContainer = styled.span<CartItemsContainerProps>`
   font: ${({theme})=> theme.fonts['text-s-bold']};
   
   transition: opacity 0.2s;
-  opacity: ${({isVisible})=> {
-    if(isVisible){
-      return 1;
-    }
-    return 0;
-  }};
+  opacity: ${({visible})=> visible === 'true' ? 1 : 0};
 `;
