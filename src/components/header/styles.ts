@@ -40,9 +40,7 @@ export const CustomerLocationAndCart = styled.div`
   }
 `;
 
-interface CartItemsContainerProps {
-  visible: 'true' | 'false';
-}
+interface CartItemsContainerProps extends React.HTMLAttributes<HTMLSpanElement> {}
 
 export const CartItemsContainer = styled.span<CartItemsContainerProps>`
   position: absolute;
@@ -62,5 +60,9 @@ export const CartItemsContainer = styled.span<CartItemsContainerProps>`
   font: ${({theme})=> theme.fonts['text-s-bold']};
   
   transition: opacity 0.2s;
-  opacity: ${({visible})=> visible === 'true' ? 1 : 0};
+  opacity: 0;
+  
+  &[data-visible="true"]{
+    opacity: 1;
+  }
 `;
