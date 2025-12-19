@@ -72,40 +72,4 @@ export const CardControlsContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 0.8rem;
-
-  & button {
-    padding: 0.8rem;
-    border-radius: 6px;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: transparent;
-
-    & > svg {
-      fill: ${({ theme }) => theme.colors['base-card']};
-    }
-  }
-
-  & > button {
-    background-color: ${({ theme }) => theme.colors['purple-dark']};
-  }
-
-  & > div {
-    display: flex;
-    height: 100%;
-    background-color: ${({ theme }) => theme.colors['base-button']};
-    border-radius: 6px;
-
-    & > button > svg {
-      fill: ${({ theme }) => theme.colors.purple};
-    }
-    & > span {
-      min-width: 2rem;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  }
 `;

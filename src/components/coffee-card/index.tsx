@@ -9,6 +9,7 @@ import {
 
 import coffeeImage from '../../assets/images/expresso_americano.png';
 import { CartControls } from '../cart-controls';
+import { Button } from '../button';
 
 export function CoffeeCard() {
   return (
@@ -25,9 +26,9 @@ export function CoffeeCard() {
         </span>
         <CardControlsContainer>
           <CartControls />
-          <button>
+          <Button variant="icon">
             <ShoppingCartSimpleIcon size={22} weight="fill" />
-          </button>
+          </Button>
         </CardControlsContainer>
       </CardPriceAndControlsContainer>
     </CoffeeCardContainer>
