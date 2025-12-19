@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 export function Header(){
   return (
     <HeaderContainer>
-      <img src="/logo.svg" />
+      <Link to='/'>
+        <img src="/logo.svg" />
+      </Link>
       <CustomerLocationAndCart>
         <span>
           <MapPinIcon weight="fill" size={22}/>
