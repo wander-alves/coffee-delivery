@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const CoffeeCardContainer = styled.div`
   padding: 2rem;
@@ -9,28 +9,28 @@ export const CoffeeCardContainer = styled.div`
   border-top-right-radius: 36px;
   border-bottom-left-radius: 36px;
 
-  background-color: ${({theme})=> theme.colors["base-card"]};
+  background-color: ${({ theme }) => theme.colors['base-card']};
 
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  &>img{
+  & > img {
     position: absolute;
     top: -2rem;
     width: 12rem;
     height: 12rem;
   }
-  &>h2 { 
-    font: ${({theme})=> theme.fonts["title-s"]};
-    color: ${({theme})=> theme.colors["base-subtitle"]};
+  & > h2 {
+    font: ${({ theme }) => theme.fonts['title-s']};
+    color: ${({ theme }) => theme.colors['base-subtitle']};
     margin-block: 1.6rem 0.8rem;
   }
-  &>p {
+  & > p {
     text-align: center;
-    font: ${({theme})=> theme.fonts["text-s"]};
-    color: ${({theme})=> theme.colors["base-label"]};
+    font: ${({ theme }) => theme.fonts['text-s']};
+    color: ${({ theme }) => theme.colors['base-label']};
     margin-bottom: 3.2rem;
   }
 `;
@@ -46,23 +46,23 @@ export const TagList = styled.div`
 export const TagItem = styled.div`
   padding: 0.4rem 0.8rem;
   border-radius: 999px;
-  font: ${({theme})=> theme.fonts.tag};
+  font: ${({ theme }) => theme.fonts.tag};
   text-transform: uppercase;
-  background-color: ${({theme})=> theme.colors["yellow-light"]};
-  color: ${({theme})=> theme.colors["yellow-dark"]};
+  background-color: ${({ theme }) => theme.colors['yellow-light']};
+  color: ${({ theme }) => theme.colors['yellow-dark']};
 `;
 
 export const CardPriceAndControlsContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  
-  &>span {
-    font: ${({theme})=> theme.fonts["text-s"]};
-    color: ${({theme})=> theme.colors["base-text"]};
-    
-    &>strong {
-      font: ${({theme})=> theme.fonts["title-m"]};
+
+  & > span {
+    font: ${({ theme }) => theme.fonts['text-s']};
+    color: ${({ theme }) => theme.colors['base-text']};
+
+    & > strong {
+      font: ${({ theme }) => theme.fonts['title-m']};
     }
   }
 `;
@@ -73,7 +73,7 @@ export const CardControlsContainer = styled.div`
   justify-content: center;
   gap: 0.8rem;
 
-  & button{
+  & button {
     padding: 0.8rem;
     border-radius: 6px;
     border: none;
@@ -82,25 +82,25 @@ export const CardControlsContainer = styled.div`
     align-items: center;
     background: transparent;
 
-    &>svg {
-      fill: ${({theme})=> theme.colors["base-card"]};
+    & > svg {
+      fill: ${({ theme }) => theme.colors['base-card']};
     }
   }
-  
-  &>button {
-    background-color: ${({theme})=> theme.colors["purple-dark"]};
+
+  & > button {
+    background-color: ${({ theme }) => theme.colors['purple-dark']};
   }
-  
-  &>div{ 
+
+  & > div {
     display: flex;
     height: 100%;
-    background-color: ${({theme})=> theme.colors["base-button"]};
+    background-color: ${({ theme }) => theme.colors['base-button']};
     border-radius: 6px;
 
-    &>button>svg{
-      fill: ${({theme})=> theme.colors.purple};
+    & > button > svg {
+      fill: ${({ theme }) => theme.colors.purple};
     }
-    &>span { 
+    & > span {
       min-width: 2rem;
 
       display: flex;

@@ -14,14 +14,12 @@ export function NotFound() {
           <p>Parece que não há nada por aqui...</p>
           <p>Deseja retornar à página inicial?</p>
         </div>
-      <Link to="/">
-        <ArrowLeftIcon size={24}/>
-        Voltar
-      </Link>
-
+        <Link to="/">
+          <ArrowLeftIcon size={24} />
+          Voltar
+        </Link>
       </HeadlineContentContainer>
       <img src={notFoundImg} alt="Página não encontrada" />
-
     </NotFoundContainer>
   );
 }

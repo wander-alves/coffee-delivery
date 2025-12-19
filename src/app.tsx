@@ -4,12 +4,12 @@ import './styles/global.css';
 import { ThemeProvider } from 'styled-components';
 import { defaulTheme } from './styles/theme/default';
 
-export function App(){
+export function App() {
   return (
     <ThemeProvider theme={defaulTheme}>
       <BrowserRouter>
         <Router />
       </BrowserRouter>
     </ThemeProvider>
-  )
+  );
 }

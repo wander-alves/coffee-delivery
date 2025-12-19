@@ -5,16 +5,13 @@ export const NotFoundContainer = styled.main`
 
   display: flex;
   justify-content: space-between;
-  
-  
 
-  &>img{
+  & > img {
     width: 56rem;
     height: 29.2rem;
     margin-bottom: 6.4rem;
   }
 `;
-
 
 export const HeadlineContentContainer = styled.div`
   display: flex;
@@ -22,25 +19,25 @@ export const HeadlineContentContainer = styled.div`
   justify-content: center;
   gap: 5rem;
 
-&>div{
+  & > div {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 0.8rem;
 
-    &>h1 { 
-      font: ${({theme})=> theme.fonts['title-l']};
-      color: ${({theme})=> theme.colors['purple-dark']};
+    & > h1 {
+      font: ${({ theme }) => theme.fonts['title-l']};
+      color: ${({ theme }) => theme.colors['purple-dark']};
       margin-bottom: 0.8rem;
     }
-    
-    &>p{
-      font: ${({theme})=> theme.fonts['text-m']};
-      color: ${({theme})=> theme.colors['base-text']};
+
+    & > p {
+      font: ${({ theme }) => theme.fonts['text-m']};
+      color: ${({ theme }) => theme.colors['base-text']};
     }
   }
 
-  &>a { 
+  & > a {
     padding: 1.2rem;
     width: 20rem;
 
@@ -48,17 +45,17 @@ export const HeadlineContentContainer = styled.div`
     align-items: center;
     justify-content: center;
     gap: 0.8rem;
-    
+
     border-radius: 8px;
-    background-color: ${({theme})=> theme.colors.purple};
-    font: ${({theme})=> theme.fonts['button-m']};
-    
+    background-color: ${({ theme }) => theme.colors.purple};
+    font: ${({ theme }) => theme.fonts['button-m']};
+
     text-decoration: none;
     text-transform: uppercase;
 
-    color: ${({theme})=> theme.colors.white};
-    &>svg {
-      color: ${({theme})=> theme.colors.white};
+    color: ${({ theme }) => theme.colors.white};
+    & > svg {
+      color: ${({ theme }) => theme.colors.white};
     }
   }
-`
+`;

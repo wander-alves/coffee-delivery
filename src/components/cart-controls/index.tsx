@@ -1,6 +1,6 @@
 import { MinusIcon, PlusIcon } from '@phosphor-icons/react';
 
-export function CartControls(){
+export function CartControls() {
   return (
     <div>
       <button>
@@ -11,5 +11,5 @@ export function CartControls(){
         <PlusIcon size={14} weight="bold" />
       </button>
     </div>
-  )
+  );
 }

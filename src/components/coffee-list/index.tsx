@@ -1,11 +1,11 @@
-import { CoffeeCard } from "../coffee-card";
-import { CoffeeItemList, CoffeeListContainer } from "./styles";
+import { CoffeeCard } from '../coffee-card';
+import { CoffeeItemList, CoffeeListContainer } from './styles';
 
-export function CoffeeList(){
+export function CoffeeList() {
   return (
     <CoffeeListContainer>
       <h1>Nossos cafés</h1>
-      
+
       <CoffeeItemList>
         <CoffeeCard />
         <CoffeeCard />
@@ -14,5 +14,5 @@ export function CoffeeList(){
         <CoffeeCard />
       </CoffeeItemList>
     </CoffeeListContainer>
-  )
+  );
 }

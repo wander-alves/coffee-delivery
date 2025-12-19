@@ -11,7 +11,7 @@ export const HeroContainer = styled.section`
   background-size: cover;
   background-position: center;
 
-  &>img {
+  & > img {
     height: 36rem;
     width: 47.6rem;
   }
@@ -29,19 +29,19 @@ export const HeroHeadlineContentContainer = styled.div`
   flex-direction: column;
   gap: 1.6rem;
 
-  &>h1 { 
-    font: ${({theme})=> theme.fonts["title-xl"]};
-    color: ${({theme})=> theme.colors["base-title"]};
+  & > h1 {
+    font: ${({ theme }) => theme.fonts['title-xl']};
+    color: ${({ theme }) => theme.colors['base-title']};
   }
-  &>p { 
-    font: ${({theme})=> theme.fonts["text-l"]};
-    color: ${({theme})=> theme.colors["base-subtitle"]};
+  & > p {
+    font: ${({ theme }) => theme.fonts['text-l']};
+    color: ${({ theme }) => theme.colors['base-subtitle']};
   }
 `;
 
 export const HeroListContainer = styled.ul`
   list-style: none;
-  
+
   display: grid;
   grid-template-columns: 1.5fr 2fr;
   grid-template-rows: repeat(2, 1fr);
@@ -49,8 +49,8 @@ export const HeroListContainer = styled.ul`
   row-gap: 2rem;
 `;
 
-interface HeroListItemProps { 
-  itemcolor: 'purple' | 'yellow' | 'yellow-dark' | 'base-text'
+interface HeroListItemProps {
+  itemcolor: 'purple' | 'yellow' | 'yellow-dark' | 'base-text';
 }
 
 export const HeroListItem = styled.li<HeroListItemProps>`
@@ -58,22 +58,22 @@ export const HeroListItem = styled.li<HeroListItemProps>`
   align-items: center;
   gap: 1.2rem;
 
-  &>div { 
+  & > div {
     width: 3.2rem;
     height: 3.2rem;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 999px;
-    background-color: ${({theme, itemcolor}) => theme.colors[itemcolor]};
+    background-color: ${({ theme, itemcolor }) => theme.colors[itemcolor]};
 
-    &>svg {
-      fill: ${({theme})=> theme.colors.background};
+    & > svg {
+      fill: ${({ theme }) => theme.colors.background};
     }
   }
 
-  &>p {
-    font: ${({theme})=> theme.fonts['text-m']};
-    color: ${({theme})=> theme.colors['base-text']};
+  & > p {
+    font: ${({ theme }) => theme.fonts['text-m']};
+    color: ${({ theme }) => theme.colors['base-text']};
   }
 `;

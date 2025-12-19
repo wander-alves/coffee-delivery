@@ -1,4 +1,4 @@
-export const defaulTheme = { 
+export const defaulTheme = {
   fonts: {
     'title-xs': `700 1.8rem/1.3 "Baloo 2", sans-serif;`,
     'title-s': `700 2rem/1.3 "Baloo 2", sans-serif;`,
@@ -12,13 +12,13 @@ export const defaulTheme = {
     'text-m-bold': `700 1.6rem/1.3 "Roboto", sans-serif;`,
     'text-l': `400 2rem/1.3 "Roboto", sans-serif;`,
     'text-l-bold': `700 2rem/1.3 "Roboto", sans-serif;`,
-    'tag': `700 1rem/1.3 "Roboto", sans-serif;`,
+    tag: `700 1rem/1.3 "Roboto", sans-serif;`,
     'button-m': `400 1.2rem/1.6 "Roboto", sans-serif;`,
     'button-g': `700 1.4rem/1.6 "Roboto", sans-serif;`,
   },
   colors: {
-    'white': '#FFFFFF',
-    'background': '#FAFAFA',
+    white: '#FFFFFF',
+    background: '#FAFAFA',
     'base-card': '#F3F2F2',
     'base-input': '#EDEDED',
     'base-button': '#E6E5E5',
@@ -28,10 +28,10 @@ export const defaulTheme = {
     'base-subtitle': '#403937',
     'base-title': '#272221',
     'purple-light': '#EBE5F9',
-    'purple': '#8047F8',
+    purple: '#8047F8',
     'purple-dark': '#4B2995',
     'yellow-light': '#F1E9C9',
-    'yellow': '#DBAC2C',
+    yellow: '#DBAC2C',
     'yellow-dark': '#C47F17',
-  }
-}
+  },
+};
