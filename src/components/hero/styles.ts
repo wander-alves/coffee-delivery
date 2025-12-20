@@ -73,6 +73,7 @@ export const HeroListItem = styled.li<HeroListItemProps>`
   }
 
   & > p {
+    white-space: nowrap;
     font: ${({ theme }) => theme.fonts['text-m']};
     color: ${({ theme }) => theme.colors['base-text']};
   }

@@ -32,12 +32,23 @@ export const CartControlsContainer = styled.div`
         color: ${({ theme }) => theme.colors['purple-dark']};
       }
     }
+
+    &:first-child {
+      border-top-left-radius: 6px;
+      border-bottom-left-radius: 6px;
+    }
+    &:last-child {
+      border-top-right-radius: 6px;
+      border-bottom-right-radius: 6px;
+    }
   }
   & > span {
     height: 100%;
+    min-width: 2rem;
 
     display: flex;
     align-items: center;
     justify-content: center;
+    color: ${({ theme }) => theme.colors['base-title']};
   }
 `;
