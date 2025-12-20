@@ -20,25 +20,25 @@ export function Hero() {
         </HeroHeadlineContentContainer>
 
         <HeroListContainer>
-          <HeroListItem itemcolor="yellow-dark">
+          <HeroListItem $itemcolor="yellow-dark">
             <div>
               <ShoppingCartIcon size={16} weight="fill" />
             </div>
             <p>Compra simples e segura</p>
           </HeroListItem>
-          <HeroListItem itemcolor="base-text">
+          <HeroListItem $itemcolor="base-text">
             <div>
               <PackageIcon size={16} weight="fill" />
             </div>
             <p>Embalagem mantém o café intacto</p>
           </HeroListItem>
-          <HeroListItem itemcolor="yellow">
+          <HeroListItem $itemcolor="yellow">
             <div>
               <TimerIcon size={16} weight="fill" />
             </div>
             <p>Entrega rápida e rastreada</p>
           </HeroListItem>
-          <HeroListItem itemcolor="purple">
+          <HeroListItem $itemcolor="purple">
             <div>
               <CoffeeIcon size={16} weight="fill" />
             </div>

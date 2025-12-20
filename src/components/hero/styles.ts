@@ -50,7 +50,7 @@ export const HeroListContainer = styled.ul`
 `;
 
 interface HeroListItemProps {
-  itemcolor: 'purple' | 'yellow' | 'yellow-dark' | 'base-text';
+  $itemcolor: 'purple' | 'yellow' | 'yellow-dark' | 'base-text';
 }
 
 export const HeroListItem = styled.li<HeroListItemProps>`
@@ -59,13 +59,13 @@ export const HeroListItem = styled.li<HeroListItemProps>`
   gap: 1.2rem;
 
   & > div {
-    width: 3.2rem;
+    min-width: 3.2rem;
     height: 3.2rem;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 999px;
-    background-color: ${({ theme, itemcolor }) => theme.colors[itemcolor]};
+    background-color: ${({ theme, $itemcolor }) => theme.colors[$itemcolor]};
 
     & > svg {
       fill: ${({ theme }) => theme.colors.background};
