@@ -3,6 +3,7 @@ import { cartReducer, type OrderItem } from './cart-reducer';
 
 interface CartContextProps {
   items: OrderItem[];
+  deliveryTax: number;
   ordersCount: number;
   addCartItem: (item: OrderItem) => void;
   removeCartItem: (item: OrderItem) => void;
@@ -17,6 +18,16 @@ interface CartContextProviderProps {
 export function CartContextProvider({ children }: CartContextProviderProps) {
   const [cartState, dispatch] = useReducer(cartReducer, {
     items: [],
+    orderInfo: {
+      zipcode: '',
+      address: '',
+      addressNumber: undefined,
+      addressInfo: '',
+      neighborhood: '',
+      city: '',
+      state: '',
+      paymentMethod: '',
+    },
     deliveryTax: 3.5,
   });
 
@@ -37,13 +48,14 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     });
   }
 
-  const { items } = cartState;
+  const { items, deliveryTax } = cartState;
   const ordersCount = items.length;
 
   return (
     <CartContext.Provider
       value={{
         items,
+        deliveryTax,
         ordersCount,
         addCartItem,
         removeCartItem,

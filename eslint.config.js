@@ -48,13 +48,14 @@ export default tseslint.config(
         "off"
       ],
        'jsx-a11y/alt-text': 'off',
+       "react-hooks/incompatible-library": "off",
       "prettier/prettier": [
         "error",
         {
           printWidth: 100,
           endOfLine: "auto",
           singleQuote: true
-        }
+        },
       ],
     },
   },

@@ -11,6 +11,7 @@ import { CartControls } from '../cart-controls';
 import { Button } from '../button';
 import { useContext, useState } from 'react';
 import { CartContext } from '../../context/cart-context';
+import { priceFormatter } from '../../utils/price-formatter';
 
 export interface CoffeeProps {
   id: string;
@@ -27,8 +28,7 @@ export interface CoffeeProps {
 export function CoffeeCard({ id, title, description, price, imgUrl, ingredients }: CoffeeProps) {
   const { addCartItem } = useContext(CartContext);
   const [quantity, setQuantity] = useState(1);
-  const [dollar, cents] = String(price).split('.');
-  const formattedPrice = String(dollar).concat(',', cents.padEnd(2, '0'));
+  const formattedPrice = priceFormatter(price);
 
   function handleAddItem() {
     const cartItem = {

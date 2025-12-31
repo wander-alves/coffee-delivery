@@ -5,7 +5,6 @@ import {
   CurrencyDollarIcon,
   MapPinIcon,
   MoneyIcon,
-  TrashIcon,
 } from '@phosphor-icons/react';
 import z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -22,20 +21,20 @@ import {
   CheckoutInputPaymentMethodsContainer,
   CheckoutInputsContainer,
   CheckoutInputTitle,
-  CheckoutOrderItemContainer,
-  CheckoutOrderItemDetails,
-  CheckoutOrderItemDetailsControls,
-  CheckoutOrderItemDetailTitle,
   CheckoutOrderPriceContainer,
   CheckoutOrdersContainer,
+  EmptyCheckoutCart,
 } from './styles';
 import { Button } from '../../components/button';
-import { CartControls } from '../../components/cart-controls';
 
-import img from '../../assets/images/expresso.png';
+import { useContext } from 'react';
+import { CartContext } from '../../context/cart-context';
+import { CheckoutOrder } from '../../components/checkout-order';
+import { priceFormatter } from '../../utils/price-formatter';
+import { useNavigate } from 'react-router-dom';
 
 const checkoutFormSchema = z.object({
-  zipcode: z.string().min(3),
+  zipcode: z.string().min(8).max(9).regex(/\d{5}-?\d{3}/),
   address: z.string().min(3),
   addressNumber: z.number().min(1),
   addressInfo: z.string().min(3),
@@ -63,12 +62,21 @@ export function Checkout() {
   });
 
   const { handleSubmit, register, watch } = checkoutForm;
+  const navigate = useNavigate();
+
+  const { items, deliveryTax } = useContext(CartContext);
+  const formattedDeliveryTax = priceFormatter(deliveryTax);
+  const totalItemsPrice = items.reduce((prev, curr)=> prev + curr.price, 0.0);
+  const formattedTotalItemsPrice = priceFormatter(totalItemsPrice);
+  const totalPrice = totalItemsPrice + deliveryTax;
+  const formattedTotalPrice = priceFormatter(totalPrice);
 
   function handleAddItemToCart(data: CheckoutFormData) {
-    console.log(data);
+    console.log(data)
+    navigate('/success')
   }
+  const isButtonDisabled = items.length === 0;
 
-  // eslint-disable-next-line react-hooks/incompatible-library
   const selectedPaymentMethod = watch('paymentMethod');
   return (
     <CheckoutContainer onSubmit={handleSubmit(handleAddItemToCart)}>
@@ -206,60 +214,28 @@ export function Checkout() {
         <CheckoutFormFieldContainer>
           <h2>Cafés selecionados</h2>
           <CheckoutOrdersContainer>
-            <CheckoutOrderItemContainer>
-              <CheckoutOrderItemDetails>
-                <img src={img} alt="Café Expresso" />
-                <CheckoutOrderItemDetailTitle>
-                  <h4>Expresso Tradicional</h4>
-                  <CheckoutOrderItemDetailsControls>
-                    <CartControls
-                      quantity={1}
-                      incrementQuantity={() => {}}
-                      decrementQuantity={() => {}}
-                    />
-                    <Button variant="secondary">
-                      <TrashIcon size={16} weight="bold" />
-                      Remover
-                    </Button>
-                  </CheckoutOrderItemDetailsControls>
-                </CheckoutOrderItemDetailTitle>
-              </CheckoutOrderItemDetails>
-              <strong>R$ 9,9</strong>
-            </CheckoutOrderItemContainer>
-            <CheckoutOrderItemContainer>
-              <CheckoutOrderItemDetails>
-                <img src={img} alt="Café Expresso" />
-                <CheckoutOrderItemDetailTitle>
-                  <h4>Expresso Tradicional</h4>
-                  <CheckoutOrderItemDetailsControls>
-                    <CartControls
-                      quantity={1}
-                      incrementQuantity={() => {}}
-                      decrementQuantity={() => {}}
-                    />
-                    <Button variant="secondary">
-                      <TrashIcon size={16} weight="bold" />
-                      Remover
-                    </Button>
-                  </CheckoutOrderItemDetailsControls>
-                </CheckoutOrderItemDetailTitle>
-              </CheckoutOrderItemDetails>
-              <strong>R$ 9,9</strong>
-            </CheckoutOrderItemContainer>
+            {items.length > 0 ? 
+            items.map((item)=> (
+              <CheckoutOrder 
+                key={item.id} id={item.id} title={item.title} price={item.price} imgUrl={item.imgUrl} quantity={item.quantity} />
+            )) :
+            (<EmptyCheckoutCart><h4>O carrinho está vazio</h4></EmptyCheckoutCart>)
+            }
+            
             <CheckoutOrderPriceContainer>
               <div>
                 Total de itens
-                <span>R$ 29,70</span>
+                <span>R$ {formattedTotalItemsPrice}</span>
               </div>
               <div>
                 Entrega
-                <span>R$ 3,50</span>
+                <span>R$ {formattedDeliveryTax}</span>
               </div>
               <h3>
-                Total <span>R$ 33,20</span>
+                Total <span>R$ {formattedTotalPrice}</span>
               </h3>
             </CheckoutOrderPriceContainer>
-            <Button variant="primary">enviar</Button>
+            <Button variant="primary" disabled={isButtonDisabled}>enviar</Button>
           </CheckoutOrdersContainer>
         </CheckoutFormFieldContainer>
       </CheckoutFormContainer>

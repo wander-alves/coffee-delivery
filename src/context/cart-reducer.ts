@@ -3,10 +3,23 @@ export interface OrderItem {
   title: string;
   price: number;
   quantity: number;
+  imgUrl: string;
+}
+
+interface OrderInfo {
+  zipcode: string;
+  address: string;
+  addressNumber?: number;
+  addressInfo: string;
+  neighborhood: string;
+  city: string;
+  state: string;
+  paymentMethod: string;
 }
 
 export interface Order {
   items: OrderItem[];
+  orderInfo: OrderInfo;
   deliveryTax: number;
 }
 
