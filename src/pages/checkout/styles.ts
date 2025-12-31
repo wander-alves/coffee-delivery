@@ -13,6 +13,8 @@ export const CheckoutFormContainer = styled.form`
 export const CheckoutFormFieldContainer = styled.div`
   & > h2 {
     margin-bottom: 1.6rem;
+    font: ${({ theme }) => theme.fonts['title-xs']};
+    color: ${({ theme }) => theme.colors['base-subtitle']};
   }
 `;
 
@@ -226,7 +228,7 @@ export const CheckoutOrderItemDetails = styled.div`
 `;
 
 export const CheckoutOrderItemDetailTitle = styled.div`
-  & > h3 {
+  & > h4 {
     font: ${({ theme }) => theme.fonts['text-m']};
     color: ${({ theme }) => theme.colors['base-subtitle']};
     margin-bottom: 0.8rem;
@@ -236,7 +238,21 @@ export const CheckoutOrderItemDetailTitle = styled.div`
 export const CheckoutOrderItemDetailsControls = styled.div`
   display: flex;
   gap: 0.8rem;
+`;
 
-  & button {
+export const CheckoutOrderPriceContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+
+  & > div,
+  h3 {
+    display: flex;
+    justify-content: space-between;
+    color: ${({ theme }) => theme.colors['base-subtitle']};
+  }
+  & > h3 {
+    font: ${({ theme }) => theme.fonts['text-l-bold']};
+    color: ${({ theme }) => theme.colors['base-subtitle']};
   }
 `;

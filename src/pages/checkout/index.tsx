@@ -26,6 +26,7 @@ import {
   CheckoutOrderItemDetails,
   CheckoutOrderItemDetailsControls,
   CheckoutOrderItemDetailTitle,
+  CheckoutOrderPriceContainer,
   CheckoutOrdersContainer,
 } from './styles';
 import { Button } from '../../components/button';
@@ -209,7 +210,7 @@ export function Checkout() {
               <CheckoutOrderItemDetails>
                 <img src={img} alt="Café Expresso" />
                 <CheckoutOrderItemDetailTitle>
-                  <h3>Expresso Tradicional</h3>
+                  <h4>Expresso Tradicional</h4>
                   <CheckoutOrderItemDetailsControls>
                     <CartControls
                       quantity={1}
@@ -229,7 +230,7 @@ export function Checkout() {
               <CheckoutOrderItemDetails>
                 <img src={img} alt="Café Expresso" />
                 <CheckoutOrderItemDetailTitle>
-                  <h3>Expresso Tradicional</h3>
+                  <h4>Expresso Tradicional</h4>
                   <CheckoutOrderItemDetailsControls>
                     <CartControls
                       quantity={1}
@@ -245,6 +246,19 @@ export function Checkout() {
               </CheckoutOrderItemDetails>
               <strong>R$ 9,9</strong>
             </CheckoutOrderItemContainer>
+            <CheckoutOrderPriceContainer>
+              <div>
+                Total de itens
+                <span>R$ 29,70</span>
+              </div>
+              <div>
+                Entrega
+                <span>R$ 3,50</span>
+              </div>
+              <h3>
+                Total <span>R$ 33,20</span>
+              </h3>
+            </CheckoutOrderPriceContainer>
             <Button variant="primary">enviar</Button>
           </CheckoutOrdersContainer>
         </CheckoutFormFieldContainer>

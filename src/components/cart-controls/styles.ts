@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const CartControlsContainer = styled.div`
   width: fit-content;
-  height: 100%;
+  min-height: 100%;
 
   display: flex;
   justify-content: center;
@@ -13,7 +13,7 @@ export const CartControlsContainer = styled.div`
 
   & > button {
     border: none;
-    height: 100%;
+    min-height: 100%;
     padding: 0.8rem;
 
     display: flex;
