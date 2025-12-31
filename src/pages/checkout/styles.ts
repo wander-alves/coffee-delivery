@@ -163,6 +163,7 @@ export const CheckoutInputPaymentMethod = styled.label`
   text-transform: uppercase;
   white-space: nowrap;
   border-radius: 6px;
+  border: 1px solid transparent;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors['base-hover']};
@@ -180,5 +181,62 @@ export const CheckoutInputPaymentMethod = styled.label`
     height: 1px;
     width: 1px;
     position: absolute;
+  }
+
+  &[data-selected='true'] {
+    border: 1px solid ${({ theme }) => theme.colors.purple};
+  }
+`;
+
+export const CheckoutOrdersContainer = styled.div`
+  min-width: 44.8rem;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+
+  background-color: ${({ theme }) => theme.colors['base-card']};
+  border-radius: 6px;
+  border-top-right-radius: 36px;
+  border-bottom-left-radius: 36px;
+  & > button {
+    width: 100%;
+  }
+`;
+
+export const CheckoutOrderItemContainer = styled.div`
+  padding: 0.4rem 0.8rem 2.4rem;
+  display: flex;
+  justify-content: space-between;
+
+  border-bottom: 1px solid ${({ theme }) => theme.colors['base-button']};
+
+  & > strong {
+    font: ${({ theme }) => theme.fonts['text-m-bold']};
+    color: ${({ theme }) => theme.colors['base-text']};
+  }
+`;
+
+export const CheckoutOrderItemDetails = styled.div`
+  display: flex;
+  gap: 2rem;
+  & > img {
+    width: 6.4rem;
+  }
+`;
+
+export const CheckoutOrderItemDetailTitle = styled.div`
+  & > h3 {
+    font: ${({ theme }) => theme.fonts['text-m']};
+    color: ${({ theme }) => theme.colors['base-subtitle']};
+    margin-bottom: 0.8rem;
+  }
+`;
+
+export const CheckoutOrderItemDetailsControls = styled.div`
+  display: flex;
+  gap: 0.8rem;
+
+  & button {
   }
 `;

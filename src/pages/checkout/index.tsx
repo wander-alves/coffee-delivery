@@ -5,6 +5,7 @@ import {
   CurrencyDollarIcon,
   MapPinIcon,
   MoneyIcon,
+  TrashIcon,
 } from '@phosphor-icons/react';
 import z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -21,7 +22,16 @@ import {
   CheckoutInputPaymentMethodsContainer,
   CheckoutInputsContainer,
   CheckoutInputTitle,
+  CheckoutOrderItemContainer,
+  CheckoutOrderItemDetails,
+  CheckoutOrderItemDetailsControls,
+  CheckoutOrderItemDetailTitle,
+  CheckoutOrdersContainer,
 } from './styles';
+import { Button } from '../../components/button';
+import { CartControls } from '../../components/cart-controls';
+
+import img from '../../assets/images/expresso.png';
 
 const checkoutFormSchema = z.object({
   zipcode: z.string().min(3),
@@ -37,7 +47,7 @@ const checkoutFormSchema = z.object({
 type CheckoutFormData = z.infer<typeof checkoutFormSchema>;
 
 export function Checkout() {
-  const { handleSubmit, register } = useForm<CheckoutFormData>({
+  const checkoutForm = useForm<CheckoutFormData>({
     resolver: zodResolver(checkoutFormSchema),
     defaultValues: {
       zipcode: '',
@@ -51,9 +61,14 @@ export function Checkout() {
     },
   });
 
+  const { handleSubmit, register, watch } = checkoutForm;
+
   function handleAddItemToCart(data: CheckoutFormData) {
     console.log(data);
   }
+
+  // eslint-disable-next-line react-hooks/incompatible-library
+  const selectedPaymentMethod = watch('paymentMethod');
   return (
     <CheckoutContainer onSubmit={handleSubmit(handleAddItemToCart)}>
       <CheckoutFormContainer>
@@ -70,13 +85,26 @@ export function Checkout() {
               </CheckoutInputTitle>
               <CheckoutInputAddressFields>
                 <CheckoutInputAddressWrapper>
-                  <input type="text" id="zipcode" placeholder="CEP" {...register('zipcode')} />
-                </CheckoutInputAddressWrapper>
-                <CheckoutInputAddressWrapper>
-                  <input type="text" id="address" placeholder="Rua" {...register('address')} />
+                  <input
+                    required
+                    type="text"
+                    id="zipcode"
+                    placeholder="CEP"
+                    {...register('zipcode')}
+                  />
                 </CheckoutInputAddressWrapper>
                 <CheckoutInputAddressWrapper>
                   <input
+                    required
+                    type="text"
+                    id="address"
+                    placeholder="Rua"
+                    {...register('address')}
+                  />
+                </CheckoutInputAddressWrapper>
+                <CheckoutInputAddressWrapper>
+                  <input
+                    required
                     type="number"
                     id="address-number"
                     placeholder="Número"
@@ -86,6 +114,7 @@ export function Checkout() {
                 </CheckoutInputAddressWrapper>
                 <CheckoutInputAddressWrapper>
                   <input
+                    required
                     type="text"
                     id="address-info"
                     placeholder="Complemento"
@@ -95,6 +124,7 @@ export function Checkout() {
                 </CheckoutInputAddressWrapper>
                 <CheckoutInputAddressWrapper>
                   <input
+                    required
                     type="text"
                     id="neighborhood"
                     placeholder="Bairro"
@@ -102,10 +132,16 @@ export function Checkout() {
                   />
                 </CheckoutInputAddressWrapper>
                 <CheckoutInputAddressWrapper>
-                  <input type="text" id="city" placeholder="Cidade" {...register('city')} />
+                  <input
+                    required
+                    type="text"
+                    id="city"
+                    placeholder="Cidade"
+                    {...register('city')}
+                  />
                 </CheckoutInputAddressWrapper>
                 <CheckoutInputAddressWrapper>
-                  <input type="text" id="state" placeholder="UF" {...register('state')} />
+                  <input required type="text" id="state" placeholder="UF" {...register('state')} />
                 </CheckoutInputAddressWrapper>
               </CheckoutInputAddressFields>
             </CheckoutInputAddressContainer>
@@ -119,24 +155,98 @@ export function Checkout() {
                 </div>
               </CheckoutInputTitle>
               <CheckoutInputPaymentMethodsContainer>
-                <CheckoutInputPaymentMethod htmlFor="credit">
+                <CheckoutInputPaymentMethod
+                  htmlFor="credit"
+                  data-selected={selectedPaymentMethod === 'credit'}
+                >
                   <CreditCardIcon size={16} />
                   cartão de crédito
-                  <input type="radio" id="credit" value="credit" {...register('paymentMethod')} />
+                  <input
+                    required
+                    type="radio"
+                    id="credit"
+                    value="credit"
+                    {...register('paymentMethod')}
+                  />
                 </CheckoutInputPaymentMethod>
-                <CheckoutInputPaymentMethod htmlFor="debit">
+                <CheckoutInputPaymentMethod
+                  htmlFor="debit"
+                  data-selected={selectedPaymentMethod === 'debit'}
+                >
                   <BankIcon size={16} />
                   cartão de débito
-                  <input type="radio" id="debit" value="debit" {...register('paymentMethod')} />
+                  <input
+                    required
+                    type="radio"
+                    id="debit"
+                    value="debit"
+                    {...register('paymentMethod')}
+                  />
                 </CheckoutInputPaymentMethod>
-                <CheckoutInputPaymentMethod htmlFor="cash">
+                <CheckoutInputPaymentMethod
+                  htmlFor="cash"
+                  data-selected={selectedPaymentMethod === 'cash'}
+                >
                   <MoneyIcon size={16} />
                   cartão de crédito
-                  <input type="radio" id="cash" value="cash" {...register('paymentMethod')} />
+                  <input
+                    required
+                    type="radio"
+                    id="cash"
+                    value="cash"
+                    {...register('paymentMethod')}
+                  />
                 </CheckoutInputPaymentMethod>
               </CheckoutInputPaymentMethodsContainer>
             </CheckoutInputPaymentContainer>
           </CheckoutInputsContainer>
+        </CheckoutFormFieldContainer>
+
+        <CheckoutFormFieldContainer>
+          <h2>Cafés selecionados</h2>
+          <CheckoutOrdersContainer>
+            <CheckoutOrderItemContainer>
+              <CheckoutOrderItemDetails>
+                <img src={img} alt="Café Expresso" />
+                <CheckoutOrderItemDetailTitle>
+                  <h3>Expresso Tradicional</h3>
+                  <CheckoutOrderItemDetailsControls>
+                    <CartControls
+                      quantity={1}
+                      incrementQuantity={() => {}}
+                      decrementQuantity={() => {}}
+                    />
+                    <Button variant="secondary">
+                      <TrashIcon size={16} weight="bold" />
+                      Remover
+                    </Button>
+                  </CheckoutOrderItemDetailsControls>
+                </CheckoutOrderItemDetailTitle>
+              </CheckoutOrderItemDetails>
+              <strong>R$ 9,9</strong>
+            </CheckoutOrderItemContainer>
+            <CheckoutOrderItemContainer>
+              <CheckoutOrderItemDetails>
+                <img src={img} alt="Café Expresso" />
+                <CheckoutOrderItemDetailTitle>
+                  <h3>Expresso Tradicional</h3>
+                  <CheckoutOrderItemDetailsControls>
+                    <CartControls
+                      quantity={1}
+                      incrementQuantity={() => {}}
+                      decrementQuantity={() => {}}
+                    />
+                    <Button variant="secondary">
+                      <TrashIcon size={16} weight="bold" />
+                      Remover
+                    </Button>
+                  </CheckoutOrderItemDetailsControls>
+                </CheckoutOrderItemDetailTitle>
+              </CheckoutOrderItemDetails>
+              <strong>R$ 9,9</strong>
+            </CheckoutOrderItemContainer>
+            <Button variant="primary">enviar</Button>
+          </CheckoutOrdersContainer>
         </CheckoutFormFieldContainer>
       </CheckoutFormContainer>
     </CheckoutContainer>
