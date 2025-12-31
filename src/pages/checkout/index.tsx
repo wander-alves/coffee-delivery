@@ -1,5 +1,11 @@
 import { useForm } from 'react-hook-form';
-import { MapPinIcon } from '@phosphor-icons/react';
+import {
+  BankIcon,
+  CreditCardIcon,
+  CurrencyDollarIcon,
+  MapPinIcon,
+  MoneyIcon,
+} from '@phosphor-icons/react';
 import z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 
@@ -10,6 +16,9 @@ import {
   CheckoutInputAddressContainer,
   CheckoutInputAddressFields,
   CheckoutInputAddressWrapper,
+  CheckoutInputPaymentContainer,
+  CheckoutInputPaymentMethod,
+  CheckoutInputPaymentMethodsContainer,
   CheckoutInputsContainer,
   CheckoutInputTitle,
 } from './styles';
@@ -100,6 +109,33 @@ export function Checkout() {
                 </CheckoutInputAddressWrapper>
               </CheckoutInputAddressFields>
             </CheckoutInputAddressContainer>
+
+            <CheckoutInputPaymentContainer>
+              <CheckoutInputTitle>
+                <CurrencyDollarIcon size={22} />
+                <div>
+                  <legend>Endereço de entrega</legend>
+                  <span>Informe o endereço onde deseja receber seu pedido</span>
+                </div>
+              </CheckoutInputTitle>
+              <CheckoutInputPaymentMethodsContainer>
+                <CheckoutInputPaymentMethod htmlFor="credit">
+                  <CreditCardIcon size={16} />
+                  cartão de crédito
+                  <input type="radio" id="credit" value="credit" {...register('paymentMethod')} />
+                </CheckoutInputPaymentMethod>
+                <CheckoutInputPaymentMethod htmlFor="debit">
+                  <BankIcon size={16} />
+                  cartão de débito
+                  <input type="radio" id="debit" value="debit" {...register('paymentMethod')} />
+                </CheckoutInputPaymentMethod>
+                <CheckoutInputPaymentMethod htmlFor="cash">
+                  <MoneyIcon size={16} />
+                  cartão de crédito
+                  <input type="radio" id="cash" value="cash" {...register('paymentMethod')} />
+                </CheckoutInputPaymentMethod>
+              </CheckoutInputPaymentMethodsContainer>
+            </CheckoutInputPaymentContainer>
           </CheckoutInputsContainer>
         </CheckoutFormFieldContainer>
       </CheckoutFormContainer>

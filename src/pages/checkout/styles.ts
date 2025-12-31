@@ -134,3 +134,51 @@ export const CheckoutInputAddressWrapper = styled.div`
     outline: 1px solid ${({ theme }) => theme.colors['yellow-dark']};
   }
 `;
+
+export const CheckoutInputPaymentContainer = styled(CheckoutInputContainer)`
+  & > div > svg {
+    color: ${({ theme }) => theme.colors.purple};
+  }
+`;
+
+export const CheckoutInputPaymentMethodsContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 1.2rem;
+`;
+
+export const CheckoutInputPaymentMethod = styled.label`
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  cursor: pointer;
+
+  padding: 1.6rem;
+  background-color: ${({ theme }) => theme.colors['base-button']};
+
+  color: ${({ theme }) => theme.colors['base-text']};
+  font: ${({ theme }) => theme.fonts['button-m']};
+  text-transform: uppercase;
+  white-space: nowrap;
+  border-radius: 6px;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors['base-hover']};
+    color: ${({ theme }) => theme.colors['base-subtitle']};
+    & > svg {
+      color: ${({ theme }) => theme.colors['purple-dark']};
+    }
+  }
+
+  & > svg {
+    color: ${({ theme }) => theme.colors.purple};
+  }
+
+  & > input[type='radio'] {
+    height: 1px;
+    width: 1px;
+    position: absolute;
+  }
+`;
