@@ -34,10 +34,14 @@ import { priceFormatter } from '../../utils/price-formatter';
 import { useNavigate } from 'react-router-dom';
 
 const checkoutFormSchema = z.object({
-  zipcode: z.string().min(8).max(9).regex(/\d{5}-?\d{3}/),
-  address: z.string().min(3),
-  addressNumber: z.number().min(1),
-  addressInfo: z.string().min(3),
+  zipcode: z
+    .string()
+    .min(8)
+    .max(9)
+    .regex(/\d{5}-?\d{3}/),
+  street: z.string().min(3),
+  streetNumber: z.number().min(1),
+  streetInfo: z.string().min(3),
   neighborhood: z.string().min(3),
   city: z.string().min(3),
   state: z.string().min(2).max(2),
@@ -51,9 +55,9 @@ export function Checkout() {
     resolver: zodResolver(checkoutFormSchema),
     defaultValues: {
       zipcode: '',
-      address: '',
-      addressNumber: undefined,
-      addressInfo: '',
+      street: '',
+      streetNumber: undefined,
+      streetInfo: '',
       neighborhood: '',
       city: '',
       state: '',
@@ -66,14 +70,16 @@ export function Checkout() {
 
   const { items, deliveryTax } = useContext(CartContext);
   const formattedDeliveryTax = priceFormatter(deliveryTax);
-  const totalItemsPrice = items.reduce((prev, curr)=> prev + curr.price, 0.0);
+  const totalItemsPrice = items.reduce((prev, curr) => prev + curr.price, 0.0);
   const formattedTotalItemsPrice = priceFormatter(totalItemsPrice);
   const totalPrice = totalItemsPrice + deliveryTax;
   const formattedTotalPrice = priceFormatter(totalPrice);
 
   function handleAddItemToCart(data: CheckoutFormData) {
-    console.log(data)
-    navigate('/success')
+    console.log(data);
+    navigate('/success', {
+      state: data,
+    });
   }
   const isButtonDisabled = items.length === 0;
 
@@ -108,7 +114,7 @@ export function Checkout() {
                     type="text"
                     id="address"
                     placeholder="Rua"
-                    {...register('address')}
+                    {...register('street')}
                   />
                 </CheckoutInputAddressWrapper>
                 <CheckoutInputAddressWrapper>
@@ -118,7 +124,7 @@ export function Checkout() {
                     id="address-number"
                     placeholder="Número"
                     min={0}
-                    {...register('addressNumber', { valueAsNumber: true })}
+                    {...register('streetNumber', { valueAsNumber: true })}
                   />
                 </CheckoutInputAddressWrapper>
                 <CheckoutInputAddressWrapper>
@@ -127,7 +133,7 @@ export function Checkout() {
                     type="text"
                     id="address-info"
                     placeholder="Complemento"
-                    {...register('addressInfo')}
+                    {...register('streetInfo')}
                   />
                   <em>Opcional</em>
                 </CheckoutInputAddressWrapper>
@@ -214,14 +220,23 @@ export function Checkout() {
         <CheckoutFormFieldContainer>
           <h2>Cafés selecionados</h2>
           <CheckoutOrdersContainer>
-            {items.length > 0 ? 
-            items.map((item)=> (
-              <CheckoutOrder 
-                key={item.id} id={item.id} title={item.title} price={item.price} imgUrl={item.imgUrl} quantity={item.quantity} />
-            )) :
-            (<EmptyCheckoutCart><h4>O carrinho está vazio</h4></EmptyCheckoutCart>)
-            }
-            
+            {items.length > 0 ? (
+              items.map((item) => (
+                <CheckoutOrder
+                  key={item.id}
+                  id={item.id}
+                  title={item.title}
+                  price={item.price}
+                  imgUrl={item.imgUrl}
+                  quantity={item.quantity}
+                />
+              ))
+            ) : (
+              <EmptyCheckoutCart>
+                <h4>O carrinho está vazio</h4>
+              </EmptyCheckoutCart>
+            )}
+
             <CheckoutOrderPriceContainer>
               <div>
                 Total de itens
@@ -235,7 +250,9 @@ export function Checkout() {
                 Total <span>R$ {formattedTotalPrice}</span>
               </h3>
             </CheckoutOrderPriceContainer>
-            <Button variant="primary" disabled={isButtonDisabled}>enviar</Button>
+            <Button variant="primary" disabled={isButtonDisabled}>
+              enviar
+            </Button>
           </CheckoutOrdersContainer>
         </CheckoutFormFieldContainer>
       </CheckoutFormContainer>

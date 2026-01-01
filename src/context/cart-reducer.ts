@@ -8,9 +8,9 @@ export interface OrderItem {
 
 interface OrderInfo {
   zipcode: string;
-  address: string;
-  addressNumber?: number;
-  addressInfo: string;
+  street: string;
+  streetNumber?: number;
+  streetInfo: string;
   neighborhood: string;
   city: string;
   state: string;

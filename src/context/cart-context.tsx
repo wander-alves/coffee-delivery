@@ -20,9 +20,9 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     items: [],
     orderInfo: {
       zipcode: '',
-      address: '',
-      addressNumber: undefined,
-      addressInfo: '',
+      street: '',
+      streetNumber: undefined,
+      streetInfo: '',
       neighborhood: '',
       city: '',
       state: '',
