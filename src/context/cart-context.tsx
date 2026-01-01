@@ -1,4 +1,4 @@
-import { createContext, useReducer, type ReactNode } from 'react';
+import { createContext, useEffect, useReducer, type ReactNode } from 'react';
 import { cartReducer, type OrderItem } from './cart-reducer';
 
 interface CartContextProps {
@@ -16,20 +16,37 @@ interface CartContextProviderProps {
 }
 
 export function CartContextProvider({ children }: CartContextProviderProps) {
-  const [cartState, dispatch] = useReducer(cartReducer, {
-    items: [],
-    orderInfo: {
-      zipcode: '',
-      street: '',
-      streetNumber: undefined,
-      streetInfo: '',
-      neighborhood: '',
-      city: '',
-      state: '',
-      paymentMethod: '',
+  const cartStorageString = '@ignite-coffeeshop:cart-state-1.0.0';
+  const [cartState, dispatch] = useReducer(
+    cartReducer,
+    {
+      items: [],
+      orderInfo: {
+        zipcode: '',
+        street: '',
+        streetNumber: undefined,
+        streetInfo: '',
+        neighborhood: '',
+        city: '',
+        state: '',
+        paymentMethod: '',
+      },
+      deliveryTax: 3.5,
     },
-    deliveryTax: 3.5,
-  });
+    (initialState) => {
+      const currentLocalStorageAsJSON = localStorage.getItem(cartStorageString);
+
+      console.log(currentLocalStorageAsJSON);
+
+      if (currentLocalStorageAsJSON) {
+        return {
+          ...initialState,
+          items: JSON.parse(currentLocalStorageAsJSON),
+        };
+      }
+      return initialState;
+    },
+  );
 
   function addCartItem(item: OrderItem) {
     dispatch({
@@ -50,6 +67,11 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
 
   const { items, deliveryTax } = cartState;
   const ordersCount = items.length;
+
+  useEffect(() => {
+    const currentStateJSON = JSON.stringify(items);
+    localStorage.setItem(cartStorageString, currentStateJSON);
+  }, [items]);
 
   return (
     <CartContext.Provider

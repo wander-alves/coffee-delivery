@@ -8,15 +8,15 @@ Nesse segundo desafio da formação React 2022, iremos aplicar os conceitos do R
 ### Tarefas
 
 - [x] Criar projeto com Vite + React + TypeScript
-- [ ] Criar página Home (listagem de cafés)
-- [ ] Criar página Checkout (formulário de endereço + resumo do carrinho)
-- [ ] Criar página de Sucesso (confirmação do pedido)
-- [ ] Configurar rotas com `react-router-dom`
-- [ ] Implementar ContextAPI/useReducer para gerenciar o estado global do carrinho
-- [ ] Aumentar/diminuir quantidade de um café no carrinho
-- [ ] Remover café do carrinho 
-- [ ] Mostrar subtotal e total geral dos itens
-- [ ] Seleção de método de pagamento (crédito, débito ou dinheiro)
+- [x] Criar página Home (listagem de cafés)
+- [x] Criar página Checkout (formulário de endereço + resumo do carrinho)
+- [x] Criar página de Sucesso (confirmação do pedido)
+- [x] Configurar rotas com `react-router-dom`
+- [x] Implementar ContextAPI/useReducer para gerenciar o estado global do carrinho
+- [x] Aumentar/diminuir quantidade de um café no carrinho
+- [x] Remover café do carrinho 
+- [x] Mostrar subtotal e total geral dos itens
+- [x] Seleção de método de pagamento (crédito, débito ou dinheiro)
 
 ### Requisitos:
 
